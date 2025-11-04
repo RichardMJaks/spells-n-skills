@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfosjtgj6l6d0"]
+
+[ext_resource type="Script" uid="uid://ci3slj2fj10h1" path="res://multiplayer_spawner.gd" id="1_ia1lp"]
+[ext_resource type="PackedScene" uid="uid://df4oflh6lu7tp" path="res://start_server_ui.tscn" id="1_uhqqe"]
+[ext_resource type="PackedScene" uid="uid://d0f4c84pihynq" path="res://test_char.tscn" id="2_sasra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6adnx"]
+size = Vector2(747, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(194, 547)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-78, -1)
+shape = SubResource("RectangleShape2D_6adnx")
+
+[node name="Panel" type="Panel" parent="StaticBody2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -456.0
+offset_top = -10.0
+offset_right = 289.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("spawn_position")]
+_spawnable_scenes = PackedStringArray("uid://d0f4c84pihynq")
+spawn_path = NodePath("..")
+script = ExtResource("1_ia1lp")
+network_player = ExtResource("2_sasra")
+spawn_position = NodePath("../Marker2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartServerUi" parent="." instance=ExtResource("1_uhqqe")]
+offset_left = 546.0
+offset_top = 287.0
+offset_right = 546.0
+offset_bottom = 287.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(403, 378)

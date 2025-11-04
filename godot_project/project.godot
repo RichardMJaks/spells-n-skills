@@ -13,3 +13,7 @@ config_version=5
 config/name="Spells N Skills"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+NetworkHandler="*res://network_handler.gd"
